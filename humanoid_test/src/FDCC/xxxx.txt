@@ -1,0 +1,28 @@
+if (t >= next_print_time)
+{
+    const Vector17d q_error = sys.q_real - q_initial;
+
+    std::cout << "\nt = " << t << " s" << std::endl;
+
+    std::cout << "torso q-q0 = "
+              << q_error.segment<3>(0).transpose()
+              << std::endl;
+
+    std::cout << "left  q-q0 = "
+              << q_error.segment<7>(3).transpose()
+              << std::endl;
+
+    std::cout << "right q-q0 = "
+              << q_error.segment<7>(10).transpose()
+              << std::endl;
+
+    std::cout << "left xerr  = "
+              << output.xerr_left.transpose()
+              << std::endl;
+
+    std::cout << "right xerr = "
+              << output.xerr_right.transpose()
+              << std::endl;
+
+    next_print_time += 1.0;
+}
